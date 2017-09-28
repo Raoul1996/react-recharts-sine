@@ -1,26 +1,90 @@
 /**
  * Created by out_xu on 17/3/16.
  */
-import React, { Component } from 'react'
-import { Link } from 'react-router'
+import React, {Component} from 'react'
+import {message, Form, Input, Button, Checkbox} from 'antd'
+import 'antd/lib/style/index.css'
+// use css modules
+import style from './app.less'
 
-import logo from '../images/logo.svg'
+const FormItem = Form.Item
+const formItemLayout = {
+  labelCol: {span: 4},
+  wrapperCol: {span: 8}
+}
+const formTailLayout = {
+  labelCol: {span: 4},
+  wrapperCol: {span: 8, offset: 4}
+}
 
-import './app.less'
+@Form.create()
 class AppComponent extends Component {
-  render () {
+  state = {
+    checkNick: false
+  }
+  check = () => {
+    this.props.form.validateFields(
+      (err) => {
+        if (!err) {
+          console.info('success')
+        }
+      }
+    )
+  }
+  handleChange = (e) => {
+    this.setState({
+      checkNick: e.target.checked
+    }, () => {
+      this.props.form.validateFields(['nickname'], {force: true})
+    })
+  }
+
+  render() {
+    const {getFieldDecorator} = this.props.form
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <div className={style.app}>
+        <h1 className={style.title}>SPWM波生成器</h1>
+        <div className={style.workplace}>
+          <div className={style.arguments}>
+            <div>
+              <FormItem {...formItemLayout} label="Name">
+                {getFieldDecorator('username', {
+                  rules: [{
+                    required: true,
+                    message: 'Please input your name'
+                  }]
+                })(
+                  <Input placeholder="Please input your name"/>
+                )}
+              </FormItem>
+              <FormItem {...formItemLayout} label="Nickname">
+                {getFieldDecorator('nickname', {
+                  rules: [{
+                    required: this.state.checkNick,
+                    message: 'Please input your nickname'
+                  }]
+                })(
+                  <Input placeholder="Please input your nickname"/>
+                )}
+              </FormItem>
+              <FormItem {...formTailLayout}>
+                <Checkbox
+                  value={this.state.checkNick}
+                  onChange={this.handleChange}
+                >
+                  Nickname is required
+                </Checkbox>
+              </FormItem>
+              <FormItem {...formTailLayout}>
+                <Button type="primary" onClick={this.check}>
+                  Check
+                </Button>
+              </FormItem>
+            </div>
+
+          </div>
+          <div className={style.charts}>在这里显示图表</div>
         </div>
-        <p className="App-intro">
-          <Link to="demo">
-            欢迎使用!请查看代码，结合自己所学知识开始你的React之旅！
-          </Link>
-        </p>
-        {this.props.children}
       </div>
     )
   }

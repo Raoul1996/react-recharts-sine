@@ -19,12 +19,12 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://127.0.0.1:' + dflPort,
     'webpack/hot/only-dev-server',
-    path.join(__dirname, '/app/src/index.js'),
+    path.join(__dirname, '/app/src/index.js')
   ],
   output: {
     path: '/dist/assets',
     publicPath: '/assets',
-    filename: 'bundle.js',
+    filename: 'bundle.js'
   },
   cache: true,
   module: {
@@ -32,26 +32,26 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loaders: 'react-hot-loader!babel-loader',
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
-        loaders: ['style-loader', 'css-loader', 'postcss-loader']
+        loaders: ['style-loader', 'css-loader?modules&localIdentName=[path][name]-[hash:base64:5]', 'postcss-loader']
       },
       {
         test: /\.less/,
-        loaders: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
+        loaders: ['style-loader', 'css-loader?modules&localIdentName=[path][name]-[hash:base64:5]', 'postcss-loader', 'less-loader']
       },
       {
         test: /\.(png|jpg|gif|woff|woff2|svg)$/,
         loaders: [
-          'url-loader?limit=10000&name=[hash:8].[name].[ext]',
+          'url-loader?limit=10000&name=[hash:8].[name].[ext]'
         ]
       }
     ]
   },
   resolve: {
-    extensions: [' ', '.js', '.jsx'],
+    extensions: [' ', '.js', '.jsx']
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -69,6 +69,6 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('development')
       }
-    }),
+    })
   ]
 }
