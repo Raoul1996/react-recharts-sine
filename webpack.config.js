@@ -36,10 +36,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loaders: ['style-loader', 'css-loader?modules&localIdentName=[path][name]-[hash:base64:5]', 'postcss-loader']
+        // loaders: ['style-loader', 'css-loader?modules&localIdentName=[path][name]-[hash:base64:5]', 'postcss-loader']
+        loaders: ['style-loader', 'css-loader', 'postcss-loader']
       },
       {
         test: /\.less/,
+        // loaders: ['style-loader', 'css-loader?modules&localIdentName=[path][name]-[hash:base64:5]', 'postcss-loader', 'less-loader']
         loaders: ['style-loader', 'css-loader?modules&localIdentName=[path][name]-[hash:base64:5]', 'postcss-loader', 'less-loader']
       },
       {
