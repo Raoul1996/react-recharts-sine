@@ -15,6 +15,7 @@ const rounding = (origin, bit = 3, floor = true) => {
   } else {
     return Math.ceil(origin * Math.pow(10, bit)) / Math.pow(10, bit)
   }
+
 }
 /**
  * 计算规定个数的正弦值
@@ -22,14 +23,18 @@ const rounding = (origin, bit = 3, floor = true) => {
  * @return {{xIndex: Array, sineRes: Array}} x轴的Index和对应的sin值
  */
 const calcSine = (num) => {
-  let xIndex = []
-  let sineRes = []
-  for (let i = 0; i < num; i++) {
-    let xIndexItem = 2 * i * Math.PI / num
-    let sineResItem = Math.sin(xIndexItem)
-    xIndex.push(xIndexItem)
-    sineRes.push(sineResItem)
+  if (num) {
+    let xIndex = []
+    let sineRes = []
+    for (let i = 0; i < num; i++) {
+      let xIndexItem = 2 * i * Math.PI / num
+      let sineResItem = Math.sin(xIndexItem)
+      xIndex.push(xIndexItem)
+      sineRes.push(sineResItem)
+    }
+    return {xIndex, sineRes}
+  } else {
+    console.log('please input the number')
   }
-  return {xIndex, sineRes}
 }
 export {rounding, calcSine}

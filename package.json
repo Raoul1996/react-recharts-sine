@@ -10,7 +10,8 @@
   "dependencies": {
     "antd": "^2.13.3",
     "babel-plugin-import": "^1.6.0",
-    "react": "^15.3.2",
+    "react": "^15.6.2",
+    "react-copy-to-clipboard": "^5.0.0",
     "react-dom": "^15.3.2",
     "react-router": "^2.4.0",
     "recharts": "^1.0.0-apha.5"
