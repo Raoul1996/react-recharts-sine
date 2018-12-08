@@ -12,9 +12,9 @@
     "babel-plugin-import": "^1.6.0",
     "react": "^15.6.2",
     "react-copy-to-clipboard": "^5.0.0",
-    "react-dom": "^15.3.2",
+    "react-dom": "^15.6.1",
     "react-router": "^2.4.0",
-    "recharts": "^1.0.0-apha.5"
+    "recharts": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.6",
