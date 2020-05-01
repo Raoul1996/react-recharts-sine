@@ -5,7 +5,9 @@
   "main": "app/src/main.js",
   "scripts": {
     "build": "webpack  --progress --config webpack.production.config.js",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "antd": "^2.13.3",
@@ -14,7 +16,8 @@
     "react-copy-to-clipboard": "^5.0.0",
     "react-dom": "^15.3.2",
     "react-router": "^2.4.0",
-    "recharts": "^1.0.0-apha.5"
+    "recharts": "^1.0.0-apha.5",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.6",
@@ -67,5 +70,6 @@
       "standard-jsx"
     ]
   },
-  "author": "NEUQer/ouxu"
+  "author": "NEUQer/ouxu",
+  "snyk": true
 }
